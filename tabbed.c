@@ -131,6 +131,7 @@ static void setup(void);
 static void spawn(const Arg *arg);
 static int textnw(const char *text, unsigned int len);
 static void toggle(const Arg *arg);
+static void togglebar(const Arg *arg);
 static void unmanage(int c);
 static void unmapnotify(const XEvent *e);
 static void updatenumlockmask(void);
@@ -384,7 +385,7 @@ drawbar(void)
 		return;
 	}
 
-	nbh = nclients > 1 ? vbh : 0;
+	nbh = nclients > 1 ? showbar ? vbh : 0 : 0;
 	if (bh != nbh) {
 		bh = nbh;
 		for (i = 0; i < nclients; i++)
@@ -1189,7 +1190,13 @@ textnw(const char *text, unsigned int len)
 void
 toggle(const Arg *arg)
 {
-    *(Bool*) arg->v = !*(Bool*) arg->v;
+	*(Bool*) arg->v = !*(Bool*) arg->v;
+}
+
+void togglebar(const Arg *arg)
+{
+	showbar = !showbar;
+	drawbar();
 }
 
 void

@@ -14,6 +14,7 @@ static const char titletrim[]   = "..";
 static const int  tabwidth      = 200;
 static const Bool foreground    = True;
 static       Bool urgentswitch  = False;
+static       Bool showbar       = True;
 
 /*
  * Where to place a new tab when it is opened. When npisrelative is True,
@@ -63,4 +64,5 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,      XK_u,      toggle,      { .v = (void*) &urgentswitch } },
 
 	{ Mod1Mask,             XK_Return, fullscreen,  { 0 } },
+	{ MODKEY|Mod1Mask,      XK_l,      togglebar,   { 0 } },
 };
